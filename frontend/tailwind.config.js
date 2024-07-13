@@ -18,7 +18,8 @@ export default {
 				success: '#0b6e4f',
 				info: '#00bcbf',
 				warning: '#f95738',
-				danger: '#dd1c1a'
+				danger: '#dd1c1a',
+				standout: '#ff0'
 			}
 		},
 	},
