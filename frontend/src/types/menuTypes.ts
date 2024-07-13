@@ -1,10 +1,7 @@
 export enum EMenuType {
 	LINK = 'link',
-	BUTTON = 'button',
-}
-
-export interface IMenu {
-	menu: IMenuItem[];
+	PRIMARY_BUTTON = 'button-primary',
+	SECONDARY_BUTTON = 'button-secondary',
 }
 
 export interface IMenuItem {

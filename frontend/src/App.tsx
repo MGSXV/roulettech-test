@@ -1,11 +1,13 @@
+import { Fragment } from 'react/jsx-runtime'
 import './App.css'
+import Header from './components/Header'
 
 function App() {
 
 	return (
-		<div>
-			hello
-		</div>
+		<Fragment>
+			<Header />
+		</Fragment>
 	)
 }
 
