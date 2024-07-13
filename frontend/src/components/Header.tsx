@@ -25,43 +25,39 @@ const NavbarButton = () => (
 	</button>
 )
 
-const MenuItem = ({ item }: { item: IMenuItem }) => (
+const MenuItem = ({ item, isLast }: { item: IMenuItem, isLast: boolean }) => (
 	item.type === EMenuType.LINK ? (
-		<a href={item.link} className={`py-3 px-5 sm:px-3 md:py-4 text-base text-background hover:text-neutral-300
-				focus:outline-none focus:text-neutral-300`}>
+		<a href={item.link} className={`py-3 px-5 sm:px-3 md:py-4 text-base text-background
+				hover:text-neutral-300 focus:outline-none focus:text-neutral-300`}>
 			{item.text}
-		</a>) : item.type === EMenuType.PRIMARY_BUTTON ? (<div>
-			<a href={item.link} className={`group inline-flex items-center gap-x-2 py-2 px-5 bg-standout
-					font-medium text-sm text-primary rounded-full focus:outline-none`}>
-				{item.text}
-			</a>
-		</div>) : (<div>
-			<a href={item.link} className={`group inline-flex items-center gap-x-2 py-2 px-5 bg-primary
-					border border-standout border-solid
-					font-medium text-sm text-standout rounded-full focus:outline-none`}>
-				{item.text}
-			</a>
-		</div>)
+		</a>) : (<div className={`w-full md:w-fit`}>
+		<a href={item.link}
+				className={`group inline-flex items-center gap-x-2 py-2 px-6 font-medium text-sm rounded-full
+				focus:outline-none w-full justify-center ${!isLast ? "mb-4 md:mb-0" : ""}
+				${item.type === EMenuType.PRIMARY_BUTTON ? "bg-standout text-primary" :
+				"bg-primary text-standout border border-standout border-solid hover:bg-standout hover:text-primary"}`}>
+			{item.text}
+		</a>
+	</div>) 
 )
 
 const Header = () => {
 
-	// useEffect(() => {
-	// 	const toggleButton = document.querySelector('.hs-collapse-toggle');
-	// 	const collapseMenu = document.querySelector('#navbar-collapse');
+	useEffect(() => {
+		const toggleButton = document.querySelector('.hs-collapse-toggle');
+		const collapseMenu = document.querySelector('#navbar-collapse');
 		
-	// 	const toggleMenu = () => {
-	// 		collapseMenu?.classList.toggle('hidden');
-	// 		collapseMenu?.classList.toggle('block');
-	// 	}
+		const toggleMenu = () => {
+			collapseMenu?.classList.toggle('hidden');
+		}
 
-	// 	toggleButton?.addEventListener('click', toggleMenu);
+		toggleButton?.addEventListener('click', toggleMenu);
 
-	// 	// Cleanup event listener on unmount
-	// 	return () => {
-	// 		toggleButton?.removeEventListener('click', toggleMenu);
-	// 	}
-	// }, []);
+		// Cleanup event listener on unmount
+		return () => {
+			toggleButton?.removeEventListener('click', toggleMenu);
+		}
+	}, []);
 
 	const menuItems: IMenuItem[] = [
 		{ link: '/', text: 'Home', type: EMenuType.LINK },
@@ -72,7 +68,7 @@ const Header = () => {
 	]
 
 	const menuComp = menuItems.map((item, index) => (
-		<MenuItem key={index} item={item} />
+		<MenuItem key={index} item={item} isLast={index === menuItems.length - 1} />
 	))
 
 	return (
@@ -84,14 +80,15 @@ const Header = () => {
 					<a href="/" className={`no-underline w-32 md:w-44 text-white`}>
 						<Logo />
 					</a>
-					<div className={`md:hidden`}>
+					<div id="nav-btn-container" className={`md:hidden`}>
 						<NavbarButton />
 					</div>
 				</div>
 				<div id="navbar-collapse" className={`hs-collapse hidden overflow-hidden transition-all
 						duration-300 basis-full grow md:block`}>
 					<div className={`flex flex-col md:flex-row md:items-center px-2 py-3 md:py-1
-							md:justify-end md:ps-7 lg:gap-x-3 md:gap-x-2 md:gap-y-3`}>
+							md:justify-end md:ps-7 lg:gap-x-3 md:gap-x-2 md:gap-y-3
+							items-center`}>
 						{menuComp}
 					</div>
 				</div>
