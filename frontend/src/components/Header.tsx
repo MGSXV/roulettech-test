@@ -72,7 +72,7 @@ const Header = () => {
 	))
 
 	return (
-		<header className={`sticky top-4 inset-x-0 flex flex-wrap md:justify-center md:flex-nowrap z-50 w-full`}>
+		<header className={`fixed top-4 inset-x-0 flex flex-wrap md:justify-center md:flex-nowrap z-50 w-full`}>
 			<nav className={`relative max-w-7xl w-full bg-primary rounded-[30px] py-3 px-5 font-title
 					md:flex md:items-center md:justify-between md:py-0 mx-2 lg:mx-5 font-bold`}
 					aria-label="Global">

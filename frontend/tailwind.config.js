@@ -20,7 +20,16 @@ export default {
 				warning: '#f95738',
 				danger: '#dd1c1a',
 				standout: '#ff0'
-			}
+			},
+			keyframes: {
+				floating: {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' },
+				}
+			},
+			animation: {
+				floating: 'floating 3s ease-in-out infinite',
+			},
 		},
 	},
 	plugins: [],

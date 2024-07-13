@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--background-color: #fafaff;
+	--standout-color: #ffff00;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -11,8 +16,10 @@
 
 body {
 	width: 100vw;
-	height: 100vh;
+	height: auto;
 	display: flex;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 #root {
@@ -20,17 +27,37 @@ body {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	background-color: var(--background-color);
 }
 
-/* #navbar-collapse {
-	max-height: 0;
-	opacity: 0;
-	overflow: hidden;
-	transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+.main-header {
+	--x: 80%;
+	--y: 60%;
+	background: -webkit-radial-gradient(var(--x) var(--y), circle, var(--background-color) 10%, var(--standout-color) 0%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
-  
-#navbar-collapse.open {
-	max-height: 500px;
-	opacity: 1;
-} */
+
+.sec-header {
+	--x: 80%;
+	--y: 60%;
+	background: -webkit-radial-gradient(var(--x) var(--y), circle, var(--standout-color) 20%, var(--background-color) 0%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+
+#hero-section {
+	--s: 200px; /* control the size*/
+	--c1: #1c1c1c;
+	--c2: #202020;
+	--c3: #252525;
+	
+	background: repeating-conic-gradient(from 30deg,#0000 0 120deg,var(--c3) 0 180deg)
+		calc(.5*var(--s)) calc(.5*var(--s)*0.577),
+		repeating-conic-gradient(from 30deg,var(--c1) 0 60deg,var(--c2) 0 120deg,var(--c3) 0 180deg);
+	background-size: var(--s) calc(var(--s)*0.577);
+}
   
