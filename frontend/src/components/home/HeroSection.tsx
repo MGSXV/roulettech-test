@@ -60,7 +60,7 @@ const HeroScetion = () => {
 					</div>
 				</div>
 			</div>
-			<ScrollDownButton id='testing' />
+			<ScrollDownButton id='trusted-by-section' />
 		</div>
 	)
 }
