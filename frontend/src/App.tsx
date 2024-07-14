@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './components/home/Home'
 import NotFound from './components/404'
+import About from './components/about/About'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
 			<Header />
 			<Routes>
 				<Route path='/' element={<Home />} />
+				<Route path='/about' element={<About />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 			<Footer />
