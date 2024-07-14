@@ -2,7 +2,6 @@ import WhiteLogo from '../assets/logo/roulettech-logo-white.svg';
 import { EInputType } from '../types/inputTypes';
 import { EMenuType } from '../types/menuTypes';
 import ActionButton from './common/ActionButton';
-import Button from './common/Button';
 import Input from './common/Input';
 import Link from './common/Link';
 
