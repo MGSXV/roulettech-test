@@ -3,6 +3,7 @@ import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './components/home/Home'
+import NotFound from './components/404'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
 			<Header />
 			<Routes>
 				<Route path='/' element={<Home />} />
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 			<Footer />
 		</Router>
