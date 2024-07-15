@@ -18,8 +18,8 @@ const Footer = () => {
 				</div>
 				<div className={`flex flex-col items-start justify-between py-8`}>
 					<Link text='Home' url='/' />
-					<Link text='About us' url='/' />
-					<Link text='Contact us' url='/' />
+					<Link text='About us' url='/about' />
+					<Link text='Contact us' url='/contact' />
 				</div>
 				<div className={`flex flex-col items-start justify-between gap-y-3 py-8`}>
 					<p className={`text-white text-base sm:text-base md:text-xl`}>
