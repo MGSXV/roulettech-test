@@ -25,7 +25,7 @@ const UnderConstruction = () => {
 	}, [])
 
 	return (
-		<div className={`w-full max-w-7xl flex flex-col flex-1 items-center justify-center`}>
+		<div className={`w-full max-w-7xl flex flex-col flex-1  py-28 items-center justify-center`}>
 			<h1 className={`text-4xl font-title font-extrabold`}>
 			We have not got to this stage yet!
 			</h1>
