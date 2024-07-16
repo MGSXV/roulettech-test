@@ -5,6 +5,7 @@ import client1 from "../../assets/images/client-01.jpg";
 import client2 from "../../assets/images/client-02.jpg";
 import client3 from "../../assets/images/client-03.jpg";
 import client4 from "../../assets/images/client-04.jpg";
+import GoogleAuth from "../common/GoogleAuth";
 
 const LoginForm = () => {
 
@@ -118,13 +119,7 @@ const Login = () => {
 					<LoginForm />
 					{/* <div className="bg-white h-full w-[1px]"></div> */}
 					<hr className="bg-white" />
-					<div className="flex items-center justify-center">
-						<button className="px-4 py-2 flex gap-2 text-background hover:shadow
-							transition duration-150">
-							<img className="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />
-							<span>Login with Google</span>
-						</button>
-					</div>
+					<GoogleAuth />
 				</div>
 				<div className={`flex flex-col items-center justify-between w-full md:w-1/2 gap-y-5`}>
 					{clientsList}

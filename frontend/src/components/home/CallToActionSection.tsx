@@ -16,7 +16,7 @@ const CallToActionSection = () => {
 			<div className={`flex flex-col md:flex-row items-center justify-center mt-10 w-10/12 md:w-3/4 bg-primary py-14 px-10
 				rounded-3xl gap-6 border-3 border-solid border-standout`}>
 				<div className={`w-52`}>
-					<Button text="Get started" type={EMenuType.PRIMARY_BUTTON} link="/register" />
+					<Button text="Get started" type={EMenuType.PRIMARY_BUTTON} link="/sign-up" />
 				</div>
 				<div className={`w-52`}>
 					<Button text="Contact us" type={EMenuType.SECONDARY_BUTTON} link="/contact" />

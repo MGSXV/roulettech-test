@@ -64,7 +64,7 @@ const Header = () => {
 		{ link: '/about', text: 'About', type: EMenuType.LINK },
 		{ link: '/contact', text: 'Contact', type: EMenuType.LINK },
 		{ link: '/login', text: 'Login', type: EMenuType.PRIMARY_BUTTON },
-		{ link: '/register', text: 'Register', type: EMenuType.SECONDARY_BUTTON },
+		{ link: '/sign-up', text: 'Register', type: EMenuType.SECONDARY_BUTTON },
 	]
 
 	const menuComp = menuItems.map((item, index) => (
