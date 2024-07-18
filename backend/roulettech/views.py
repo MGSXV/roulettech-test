@@ -22,6 +22,7 @@ def login(request):
 
 @api_view(['POST'])
 def signup(request):
+    print('test')
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -29,12 +30,14 @@ def signup(request):
         user.set_password(request.data['password'])
         user.save()
         token = Token.objects.create(user=user)
+        print('success')
         return Response({'token': token.key, 'user': serializer.data}, status=status.HTTP_201_CREATED)
+    print(serializer.errors)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 @authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def test_token(request):
-    
+    print('sff', request.user)
     return Response({"message": "You are authenticated"}, status=status.HTTP_200_OK)

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { EInputType } from "../../types/inputTypes";
 import Input from "../common/Input";
 import client1 from "../../assets/images/client-01.jpg";
@@ -6,13 +6,36 @@ import client2 from "../../assets/images/client-02.jpg";
 import client3 from "../../assets/images/client-03.jpg";
 import client4 from "../../assets/images/client-04.jpg";
 import GoogleAuth from "../common/GoogleAuth";
+import { API_URL, SEP } from "../../conf/globals";
+import axios from "axios";
+import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+
+	const { setUser } = useContext(UserContext);
+	const navigate = useNavigate()
+
+	const loginHandler = async (e: any) => {
+		e.preventDefault()
+		const usernameField = document.querySelector("#username") as HTMLInputElement
+		const passwordField = document.querySelector("#login-password") as HTMLInputElement
+		try {
+			const username = usernameField.value
+			const password = passwordField.value
+			const response = await axios.post(`${API_URL}${SEP}login`, {username, password})
+			localStorage.setItem("auth_token", response.data.token)
+			setUser({id: response.data.id, username: response.data.username as string, email: response.data.email as string})
+			navigate('/profile')
+		} catch (error) {
+			console.error(error)
+		}
+	}
 
 	useEffect(() => {
 
 		const focusEmail = () => {
-			const email = document.querySelector("#email-label") as HTMLInputElement
+			const email = document.querySelector("#username-label") as HTMLInputElement
 			const password = document.querySelector("#password-label") as HTMLInputElement
 			email.classList.add("text-standout")
 			email.classList.remove("text-background")
@@ -21,7 +44,7 @@ const LoginForm = () => {
 		}
 
 		const focusPassword = () => {
-			const email = document.querySelector("#email-label") as HTMLInputElement
+			const email = document.querySelector("#username-label") as HTMLInputElement
 			const password = document.querySelector("#password-label") as HTMLInputElement
 			password.classList.add("text-standout")
 			password.classList.remove("text-background")
@@ -30,9 +53,9 @@ const LoginForm = () => {
 		}
 
 		document.title = "Login"
-		const email = document.querySelector("#email-label") as HTMLInputElement
+		const email = document.querySelector("#username-label") as HTMLInputElement
 		const password = document.querySelector("#password-label") as HTMLInputElement
-		const email_input = document.querySelector("#login-email") as HTMLInputElement
+		const email_input = document.querySelector("#username") as HTMLInputElement
 		const password_input = document.querySelector("#login-password") as HTMLInputElement
 		email.addEventListener("click", () => focusEmail())
 		password.addEventListener("click", () => focusPassword())
@@ -50,10 +73,10 @@ const LoginForm = () => {
 		<div className={`flex flex-col items-start justify-center gap-y-3`}>
 			<div className={`flex flex-col w-full gap-y-2`}>
 				<label className={`text-lg font-body font-semibold text-background cursor-pointer peer-focus:text-standout`}
-					id="email-label" htmlFor="login-email">
-					E-mail
+					id="username-label" htmlFor="username">
+					Username
 				</label>
-				<Input type={EInputType.EMAIL} id="login-email" placeholder="selkhamlich97@gmail.com" />
+				<Input type={EInputType.TEXT} id="username" placeholder="MGSXV" />
 			</div>
 			<div className={`flex flex-col w-full gap-y-2`}>
 				<label className={`text-lg font-body font-semibold text-background cursor-pointer focus-within:text-standout`}
@@ -64,7 +87,7 @@ const LoginForm = () => {
 			</div>
 			<div className={`flex flex-col w-full gap-y-3`}>
 				<button className={`bg-standout text-primary font-body font-semibold text-lg py-2
-						rounded-full mt-3`}>
+						rounded-full mt-3`} onClick={(e:any) => loginHandler(e)}>
 					Login
 				</button>
 			</div>
