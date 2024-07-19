@@ -9,7 +9,7 @@ import Contact from './components/Contact/Contact'
 import Login from './components/auth/Login'
 import ForgotPassword from './components/auth/ForgotPassword'
 import Signup from './components/auth/Sign-up'
-import UserProvider, { UserContext } from './context/UserContext'
+import { UserContext } from './context/UserContext'
 import { useContext } from 'react'
 import Profile from './components/profile/Profile'
 

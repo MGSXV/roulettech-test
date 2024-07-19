@@ -1,8 +1,6 @@
 import type { SVGProps } from 'react';
 import Input from '../common/Input';
 import { EInputType } from '../../types/inputTypes';
-import ActionButton from '../common/ActionButton';
-import { EMenuType } from '../../types/menuTypes';
 import { useForm, ValidationError } from '@formspree/react';
 
 export function MaterialSymbolsMail(props: SVGProps<SVGSVGElement>) {
@@ -15,7 +13,7 @@ export function IcOutlinePhone(props: SVGProps<SVGSVGElement>) {
 
 const ContactForm = () => {
 
-	const [state, handleSubmit] = useForm("Roulettech");
+	const [state, _handleSubmit] = useForm("Roulettech");
 
 	return (
 		<div className={`w-full h-full border-2 border-standout border-solid rounded-3xl p-5`}>
