@@ -13,9 +13,22 @@ export default defineConfig({
 			include: "**/*.svg",
 	}),
   ],
+  base: "./",
   css: {
 	postcss: {
 	  plugins: [tailwindcss()],
 	},
+  },
+  build: {
+	rollupOptions: {
+		// external: ["react", "react-router", "react-router-dom"],
+		output: {
+			globals: {
+				react: "React",
+				"react-router": "ReactRouter",
+				"react-router-dom": "ReactRouterDOM",
+			},
+		},
+	}
   },
 })
